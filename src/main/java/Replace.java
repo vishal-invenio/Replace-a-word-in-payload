@@ -1,16 +1,17 @@
-import org.mule.api.MuleEventContext;
-import org.mule.api.lifecycle.Callable;
+package com.vishal;
 
+import org.mule.api.MuleMessage;
+import org.mule.api.transformer.TransformerException;
+import org.mule.transformer.AbstractMessageTransformer;
 
-public class Replace implements Callable {
+public class StringChangeAMT extends AbstractMessageTransformer{
 
-	public Object onCall(MuleEventContext eventContext) throws Exception {
-		// TODO Auto-generated method stub
-		Object ob = eventContext.getMessage().getPayload();
-		String input = ob.toString();
-		String output = input.replaceAll("Vishal", "Sirisha");
-		return output;
+	public Object transformMessage(MuleMessage message, String outputEncoding)
+			throws TransformerException {
+		Object ch= message.getPayload();
+		String change = ch.toString();
+		String change1 = change.replaceAll("Vishal", "Sirisha");
+		return change1;
 	}
 
-	
 }
